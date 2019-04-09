@@ -1,0 +1,6 @@
+C:\Users\andre\source\repos\wahoo\services\Despesa\Despesa\obj\Debug\netcoreapp2.1\Despesa.csprojAssemblyReference.cache
+C:\Users\andre\source\repos\wahoo\services\Despesa\Despesa\obj\Debug\netcoreapp2.1\Despesa.csproj.CoreCompileInputs.cache
+C:\Users\andre\source\repos\wahoo\services\Despesa\Despesa\obj\Debug\netcoreapp2.1\Despesa.RazorAssemblyInfo.cache
+C:\Users\andre\source\repos\wahoo\services\Despesa\Despesa\obj\Debug\netcoreapp2.1\Despesa.RazorAssemblyInfo.cs
+C:\Users\andre\source\repos\wahoo\services\Despesa\Despesa\obj\Debug\netcoreapp2.1\Despesa.AssemblyInfoInputs.cache
+C:\Users\andre\source\repos\wahoo\services\Despesa\Despesa\obj\Debug\netcoreapp2.1\Despesa.AssemblyInfo.cs
