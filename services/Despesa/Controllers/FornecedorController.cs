@@ -25,6 +25,10 @@ namespace WahooDespesa
 
         }
 
+        /// <summary>
+        /// API responsável por retornar a lista com todos os fornecedores
+        /// </summary>
+        /// <returns>A Lista de todos os fornecedores</returns>
         [HttpGet]
         public IEnumerable<Fornecedor> GetAll() {
             return _context.Fornecedores.AsNoTracking().ToList();
@@ -46,8 +50,16 @@ namespace WahooDespesa
             return new ObjectResult(fornecedor); //200
         }
 
-
+        /// <summary>
+        /// API responsável pela criação de um novo fornecedor
+        /// </summary>
+        /// <param name="fornecedor"></param>
+        /// <returns>Um novo fornecedor criado</returns>
+        /// <response code="201">Retorno o novo fornecedor criado</response>
+        /// <response code="400">O objeto passado como parametro não existia (is null)</response>
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         public IActionResult Create([FromBody]Fornecedor fornecedor){
            
             if (fornecedor == null){

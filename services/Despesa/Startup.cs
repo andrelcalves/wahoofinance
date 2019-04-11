@@ -12,6 +12,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using WahooDespesa.DataContext;
+using Swashbuckle.AspNetCore.Swagger;
+using System.Reflection;
+using System.IO;
 
 namespace WahooDespesa
 {
@@ -31,20 +34,41 @@ namespace WahooDespesa
                       options.UseInMemoryDatabase("wahoo"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                            new Info
+                            {
+                                Title = "Wahoo Financial API",
+                                Version = "v1",
+                                Contact = new Contact
+                                {
+                                    Name = "André Alves",
+                                    Email = "andrelcalves@gmail.com",
+                                    Url = "https://twitter.com/andrelcalves"
+                                }
+                            });
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment()){
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
+            else{
                 app.UseHsts();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+                { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Wahoo Financial API v1"); }
+            );
             app.UseHttpsRedirection();
             app.UseMvc();
         }
